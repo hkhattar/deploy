@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+        {% load staticfiles %}
+      <!-- The line above tells Django to be ready to listen for static files -->
+      <link rel="stylesheet" href="{% static 'course_app/css/style.css' %}" media="screen" title="no title"  charset="utf-8">
+</head>
+<body>
+<h1>Add a new course</h1>
+<form action='/courses' method="post" class=>
+{% csrf_token %}
+	Name: <input type="text" name="name" class="course_name"><br>
+	Description: <br><textarea type="text" name="description" rows="4" cols="40" class= "description"></textarea><br>
+	<input type="submit" name="submit" value="Add">
+	
+</form>
+
+
+	<div class="container">
+		<table>
+			<thead>
+				<th>Course Name:</th>
+				<th>Description:</th>
+				<th>Date Added:</th>
+				<th>Actions:</th>
+			</thead>
+			{% for course in courses %}
+			<tbody>
+				<td>{{course.course_name}}</td>
+				<td>{{course.description}}</td>
+				<td>{{course.created_at}}</td>
+				<td><a href="/remove/{{course.id}}">remove</a>
+				<!-- <form action="/courses/destroy/{{course.id}}" method="post" class="remove">
+					{% csrf_token %}
+						<input type="submit" name="submit" value="remove">
+					</form> -->
+				</td>
+			</tbody>
+			{% endfor %}
+		</table>
+		<!-- <h5 class="course_name">Course Name: {{course.course_name}}</h5>
+		<p class="description">Description: {{course.description}}</p>
+		<p class="date_added">Date Added: {{course.created_at}}</p>
+		<form action="/courses/destroy/{{course.id}}" method="post" class="remove">
+		{% csrf_token %}
+			<input type="submit" name="submit" value="remove">
+		</form> -->
+	</div>
+
+
+</body>
+</html>

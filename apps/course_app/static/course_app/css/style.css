@@ -1,0 +1,30 @@
+/*.course_name, .description, .date_added, .remove, .container
+
+{
+	display:inline-block;
+}*/
+
+
+
+h1
+{
+	color: blue;
+}
+
+th, td
+{
+	padding:10px;
+
+}
+
+table
+{
+	/*border: solid black 2px;*/
+	margin:10px;
+	margin-top:20px;
+}
+
+/*.course_name, .description
+{
+	margin:10px;
+}*/
